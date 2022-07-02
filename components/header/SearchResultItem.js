@@ -23,7 +23,7 @@ const SearchResultItem = ({ item }) => {
         </p>
       </div>
 
-      <MdOutlineClose className="w-7 h-auto text-gray-500 absolute right-4" />
+      <MdOutlineClose className="w-auto h-6 text-gray-500 absolute right-6" />
     </li>
   );
 };

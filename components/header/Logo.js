@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Logo = ({width = 100, logo = 1}) => {
+const Logo = ({logo = 1}) => {
   const logo1 =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png";
   const logo2 =

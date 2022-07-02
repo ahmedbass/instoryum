@@ -18,7 +18,7 @@ const Searchbar = ({showInSm, hideSearchbar}) => {
   const clearSearchInput = () => setInputValue("");
 
   const hide = (e) => {
-    if (e.relatedTarget) return;
+    if (e.relatedTarget) return; //hide only if clicked outside self & children
     hideSearchbar();
     blur();
   };
@@ -30,7 +30,7 @@ const Searchbar = ({showInSm, hideSearchbar}) => {
 
   return (
       <div
-          className="group md:relative justify-self-center w-full md:w-96 min-w-fit"
+          className="group md:relative justify-self-center w-full md:w-80 min-w-fit"
           onBlur={hide}
       >
         <div
@@ -39,13 +39,13 @@ const Searchbar = ({showInSm, hideSearchbar}) => {
             }`}
         >
           {!isFocused && (
-              <HiOutlineSearch className="h-6 mr-2 text-gray-400 min-w-fit"/>
+              <HiOutlineSearch className="h-5 mr-3 text-gray-400 min-w-fit"/>
           )}
 
           <input
               type="text"
               placeholder="Search"
-              className={`py-2 text-lg outline-none bg-transparent flex-grow w-44 sm:w-auto ${
+              className={`py-1.5 text-lg outline-none bg-transparent flex-grow w-10 ${
                   !isFocused && "text-gray-400"
               }`}
               ref={searchInput}
@@ -58,7 +58,7 @@ const Searchbar = ({showInSm, hideSearchbar}) => {
           {(isFocused || inputValue.length > 0) && (
               <button onClick={clearSearchInput}>
                 <XIcon
-                    className={`h-5 bg-gray-300 text-white rounded-full p-0.5 min-w-max`}
+                    className={`h-4 bg-gray-300 text-white rounded-full p-0.5 min-w-max`}
                 />
               </button>
           )}
