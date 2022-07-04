@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.w-18 {
+  width: 4.5rem;
+}
+
+.h-18 {
+  height: 4.5rem;
+}
+
+.my-scrollbar {
+  @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200
+}

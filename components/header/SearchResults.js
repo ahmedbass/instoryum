@@ -27,7 +27,7 @@ const SearchResults = (props) => {
     <div
       className="bg-white rounded-lg shadow-lg z-10 w-screen md:w-[28rem] h-96
             absolute top-20 md:top-16 left-1/2 transform -translate-x-1/2
-            scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+            scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-200"
       tabIndex={0}
     >
       <div className="p-4 pb-2 flex justify-between">
