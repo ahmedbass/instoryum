@@ -1,6 +1,6 @@
-import Img from "../ui/Img";
+import MyImg from "../ui/MyImg";
 import { IoIosMore } from "react-icons/io";
-import PostIcon from "./PostIcon";
+import MyIcon from "../ui/MyIcon";
 import {MdOutlineMoreHoriz} from "react-icons/md";
 import {RiMoreLine} from "react-icons/ri";
 import {FiMoreHorizontal} from "react-icons/fi";
@@ -9,7 +9,7 @@ const PostHeader = ({ user, className }) => {
   return (
     <div className={`flex items-center justify-between p-3 ${className}`}>
       <div className="flex items-center space-x-2">
-        <Img
+        <MyImg
           src={user.profilePicture}
           alt="profile picture"
           size={1}
@@ -20,7 +20,7 @@ const PostHeader = ({ user, className }) => {
       </div>
 
       <button>
-        <PostIcon Icon={FiMoreHorizontal} size={2}/>
+        <MyIcon Icon={FiMoreHorizontal} size={2}/>
       </button>
     </div>
   );

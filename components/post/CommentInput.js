@@ -1,4 +1,4 @@
-import PostIcon from "./PostIcon";
+import MyIcon from "../ui/MyIcon";
 import {VscSmiley} from "react-icons/vsc";
 
 const CommentInput = ({className }) => {
@@ -8,7 +8,7 @@ const CommentInput = ({className }) => {
         `w-full border-t flex justify-between items-center space-x-2 bg-white py-2 px-4 ${className}`
       }
     >
-      <PostIcon Icon={VscSmiley} />
+      <MyIcon Icon={VscSmiley} />
       <input
         type="text"
         className="flex-grow p-2 outline-none"

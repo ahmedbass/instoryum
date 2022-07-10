@@ -5,7 +5,7 @@ const getImageSize = (size) => {
     case 2:
       return "w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem]";
     case 3:
-      return "w-24 h-24 sm:w-40 sm:h-40";
+      return "w-20 h-20 md:w-44 md:h-44";
     case 4:
       return "w-60 h-60 sm:w-80 sm:h-80";
     case 5:
@@ -13,7 +13,7 @@ const getImageSize = (size) => {
   }
 };
 
-const Img = ({
+const MyImg = ({
   src,
   alt = "",
   size = 3,
@@ -31,8 +31,9 @@ const Img = ({
 
   return (
     <div
-      className={` ${rounded && "rounded-full "} overflow-hidden w-fit h-fit 
-      ${border && "p-0.5 bg-gray-200"} ${
+      className={` ${rounded && "rounded-full"} overflow-hidden min-w-fit min-h-fit 
+      ${border && "p-0.5 bg-gray-200"} 
+      ${
         colorful &&
         "p-0.5 bg-gradient-to-bl from-purple-500 via-red-500 to-yellow-300"
       }`}
@@ -40,8 +41,8 @@ const Img = ({
       <img
         src={src}
         alt={alt}
-        className={`${imageSize} bg-gray-300 border-2 ${
-          (border || colorful) && "border-white bg-gray-200"
+        className={`${imageSize} bg-gray-300 ${
+          (border || colorful) && "border-2 border-white bg-gray-200"
         } ${rounded && "rounded-full"} ${
           contain ? "contain" : "object-cover"
         } ${className}`}
@@ -49,4 +50,4 @@ const Img = ({
     </div>
   );
 };
-export default Img;
+export default MyImg;

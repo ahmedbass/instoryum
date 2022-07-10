@@ -1,26 +1,64 @@
-import {HiHome, HiOutlineSearch} from "react-icons/hi";
-import {RiAddCircleLine, RiHeart3Line, RiMessengerLine} from "react-icons/ri";
+import {HiHome, HiOutlineHome, HiOutlineSearch} from "react-icons/hi";
+import {RiMessengerFill, RiMessengerLine} from "react-icons/ri";
 import Link from "next/link";
-import {AiOutlineHeart} from "react-icons/ai";
+import ProfileButton from "./ProfileButton";
+import MyIcon from "../ui/MyIcon";
+import NotificationButton from "./NotificationButton";
+import NewPostButton from "./NewPostButton";
+import {useRouter} from "next/router";
+import {useCallback, useEffect, useState} from "react";
 
-const HeaderIcons = (props) => {
-  const iconStyle = "h-6 sm:h-7 md:h-8 w-auto cursor-pointer";
+const HeaderIcons = ({searchIconCallback}) => {
+  const routerName = useRouter().pathname;
+  const [currentActive, setCurrentActive] = useState(1);
+
+  const getCurrentPage = useCallback(
+      () => ["/", "/chat", "/profile"].indexOf(routerName) + 1,
+      [routerName]
+  );
+  useEffect(() => setCurrentActive(getCurrentPage()), [getCurrentPage]);
+
+  const onBlur = () => setCurrentActive(getCurrentPage());
 
   return (
-    <div className="flex items-center space-x-3 sm:space-x-4 lg:space-x-6 justify-self-end col-start-3">
-      <HiOutlineSearch
-        className={`${iconStyle} sm:hidden`}
-        onClick={props.searchIconCallback}
-      />
-      <HiHome className={iconStyle} />
-      <RiMessengerLine className={iconStyle} />
-      <AiOutlineHeart className={iconStyle} />
-      <RiAddCircleLine className={iconStyle} />
+      <div
+          className="flex items-center space-x-3 sm:space-x-4 lg:space-x-6 justify-self-end col-start-3">
+        <button className="sm:hidden" onClick={searchIconCallback}>
+          <MyIcon Icon={HiOutlineSearch} hover={false}/>
+        </button>
 
-      <Link href="/profile">
-        <a className="rounded-full h-8 w-8 md:h-10 md:w-10 bg-gray-300"></a>
-      </Link>
-    </div>
+        <Link href="/">
+          <MyIcon
+              Icon={currentActive === 1 ? HiHome : HiOutlineHome}
+              hover={false}
+          />
+        </Link>
+
+        <Link href="/chat">
+          <MyIcon
+              Icon={currentActive === 2 ? RiMessengerFill : RiMessengerLine}
+              hover={false}
+          />
+        </Link>
+
+        <NotificationButton
+            isActive={currentActive === 4}
+            onClick={() => setCurrentActive(4)}
+            onBlur={onBlur}
+        />
+
+        <NewPostButton
+            isActive={currentActive === 5}
+            onClick={() => setCurrentActive(5)}
+            onBlur={onBlur}
+        />
+
+        <ProfileButton
+            isActive={currentActive === 3}
+            onClick={() => setCurrentActive(3)}
+            onBlur={onBlur}
+        />
+      </div>
   );
 };
 export default HeaderIcons;

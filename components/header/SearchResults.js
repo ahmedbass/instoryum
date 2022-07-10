@@ -1,4 +1,5 @@
 import SearchResultItem from "./SearchResultItem";
+import OverlayCard from "../ui/OverlayCard";
 
 const SearchResults = (props) => {
   const searchResults = [
@@ -15,21 +16,16 @@ const SearchResults = (props) => {
       isFollowing: false,
       isVerified: true,
     },
-    { image: "", username: "ABC", fullName: "Abc Dfg", isFollowing: true },
-    { image: "", username: "ABC", fullName: "Abc Dfg", isFollowing: true },
-    { image: "", username: "ABC", fullName: "Abc Dfg", isFollowing: true },
-    { image: "", username: "ABC", fullName: "Abc Dfg", isFollowing: true },
-    { image: "", username: "ABC", fullName: "Abc Dfg", isFollowing: true },
-    { image: "", username: "ABC", fullName: "Abc Dfg", isFollowing: true },
+    { image: "", username: "ABC1", fullName: "Abc Dfg", isFollowing: true },
+    { image: "", username: "ABC2", fullName: "Abc Dfg", isFollowing: true },
+    { image: "", username: "ABC3", fullName: "Abc Dfg", isFollowing: true },
+    { image: "", username: "ABC4", fullName: "Abc Dfg", isFollowing: true },
+    { image: "", username: "ABC5", fullName: "Abc Dfg", isFollowing: true },
+    { image: "", username: "ABC6", fullName: "Abc Dfg", isFollowing: true },
   ];
 
   return (
-    <div
-      className="bg-white rounded-lg shadow-lg z-10 w-screen md:w-[28rem] h-96
-            absolute top-20 md:top-16 left-1/2 transform -translate-x-1/2
-            scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-200"
-      tabIndex={0}
-    >
+    <OverlayCard center className="w-screen md:w-[28rem] h-96">
       <div className="p-4 pb-2 flex justify-between">
         <h2 className="font-semibold text-xl">Recent</h2>
         <button className="font-semibold text-blue-400 text-lg">
@@ -42,7 +38,7 @@ const SearchResults = (props) => {
           <SearchResultItem key={item.username} item={item} />
         ))}
       </ul>
-    </div>
+    </OverlayCard>
   );
 };
 export default SearchResults;

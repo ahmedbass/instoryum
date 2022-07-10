@@ -63,3 +63,29 @@ export const getReadableDate = (date, short = false) => {
   console.log({ now, postDate });
   return date;
 };
+
+export const formatNumber = (number) => {
+  const ONE_BILLION = 1000000000;
+  const ONE_MILLION = 1000000;
+  const THOUSAND = 1000;
+  let tag = "";
+  let divideBy = 1;
+
+  if (number >= ONE_BILLION) {
+    tag = "B";
+    divideBy = ONE_BILLION;
+  } else if (number >= ONE_MILLION) {
+    tag = "M";
+    divideBy = ONE_MILLION;
+  } else if (number >= THOUSAND * 20) {
+    tag = "K";
+    divideBy = THOUSAND;
+  }
+
+  number = (number / divideBy).toFixed(1).replace(",0", "");
+  let nf = new Intl.NumberFormat("en-US");
+  return nf.format(number) + tag;
+};
+
+export const applyLineBreaks = (string) =>
+  string.split("\\n").map((item, i) => <p key={i}>{item}</p>);

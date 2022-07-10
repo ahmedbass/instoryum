@@ -1,4 +1,4 @@
-import PostIcon from "./PostIcon";
+import MyIcon from "../ui/MyIcon";
 import { BiExpandAlt } from "react-icons/bi";
 import { useState } from "react";
 
@@ -39,7 +39,7 @@ const PostPicture = ({ pictures, caption, picCountIndicators }) => {
       />
 
       <div className="absolute bottom-0 w-full hidden sm:grid items-center p-2 grid-cols-3">
-        <PostIcon
+        <MyIcon
           Icon={BiExpandAlt}
           size={2}
           className="text-gray-300 drop-shadow"

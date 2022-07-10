@@ -1,6 +1,6 @@
-import Img from "../ui/Img";
+import MyImg from "../ui/MyImg";
 import {getReadableDate} from "../../utils";
-import PostIcon from "./PostIcon";
+import MyIcon from "../ui/MyIcon";
 import {AiOutlineHeart} from "react-icons/ai";
 
 const Comment = ({
@@ -15,7 +15,7 @@ const Comment = ({
   return (
       <div>
         <div className="flex justify-between space-x-4">
-          <Img src="" alt="" size={1} rounded colorful/>
+          <MyImg src="" alt="" size={1} rounded colorful/>
 
           <div className="flex flex-col flex-grow space-y-3">
             <p className="space-x-2">
@@ -43,7 +43,7 @@ const Comment = ({
             )}
           </div>
 
-          <PostIcon Icon={AiOutlineHeart} size={1}/>
+          <MyIcon Icon={AiOutlineHeart} size={1}/>
         </div>
       </div>
   );

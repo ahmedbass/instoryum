@@ -19,7 +19,7 @@ const Stories = (props) => {
 
   return (
     <ul
-      className="w-full flex items-center overflow-scroll scrollbar-none
+      className="max-w-full flex items-center overflow-scroll scrollbar-none
       space-x-1.5 bg-white p-4 sm:rounded-xl border border-gray-300"
     >
       {stories.map((story) => (
