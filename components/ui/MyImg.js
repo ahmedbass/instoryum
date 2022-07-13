@@ -1,14 +1,18 @@
 const getImageSize = (size) => {
   switch (size) {
+    case 0.5:
+      return "w-6 h-6";
     case 1:
       return "w-8 h-8 sm:w-10 sm:h-10";
     case 2:
-      return "w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem]";
+      return "w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14";
     case 3:
-      return "w-20 h-20 md:w-44 md:h-44";
+      return "w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18";
     case 4:
-      return "w-60 h-60 sm:w-80 sm:h-80";
+      return "w-20 h-20 md:w-44 md:h-44";
     case 5:
+      return "w-60 h-60 sm:w-80 sm:h-80";
+    case 6:
       return "w-[25rem] h-[25rem] sm:w-[30rem] sm:h-[30rem]";
   }
 };
@@ -31,21 +35,16 @@ const MyImg = ({
 
   return (
     <div
-      className={` ${rounded && "rounded-full"} overflow-hidden min-w-fit min-h-fit 
-      ${border && "p-0.5 bg-gray-200"} 
-      ${
-        colorful &&
-        "p-0.5 bg-gradient-to-bl from-purple-500 via-red-500 to-yellow-300"
-      }`}
+      className={` ${rounded && "rounded-full"} overflow-hidden min-w-fit h-fit
+      ${border && "p-0.5 bg-gray-200"}
+      ${colorful && "p-0.5 bg-gradient-to-bl from-purple-500 via-red-500 to-yellow-300"}`}
     >
       <img
         src={src}
         alt={alt}
         className={`${imageSize} bg-gray-300 ${
           (border || colorful) && "border-2 border-white bg-gray-200"
-        } ${rounded && "rounded-full"} ${
-          contain ? "contain" : "object-cover"
-        } ${className}`}
+        } ${rounded && "rounded-full"} ${contain ? "contain" : "object-cover"} ${className}`}
       />
     </div>
   );

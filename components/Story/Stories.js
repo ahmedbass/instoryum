@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import minifaker from "minifaker";
 import "minifaker/locales/en";
 import Story from "./Story";
-
-const getRandomProfilePic = () =>
-  `https://i.pravatar.cc/150?img=${Math.ceil(Math.random() * 70)}`;
+import {getRandomProfilePic} from "../../utils";
 
 const Stories = (props) => {
   const [stories, setStories] = useState([]);

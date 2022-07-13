@@ -2,6 +2,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import MyIcon from "../ui/MyIcon";
 import Notifications from "./Notifications";
 import OverlayOpener from "../ui/OverlayOpener";
+import NotificationIndicator from "../ui/NotificationIndicator";
 
 const NotificationButton = ({ isActive, onClick, onBlur }) => {
   return (
@@ -10,13 +11,14 @@ const NotificationButton = ({ isActive, onClick, onBlur }) => {
       onClick={onClick}
       onBlur={onBlur}
       opener={
-        <div>
+        <div className="relative">
           <MyIcon
             Icon={isActive ? AiFillHeart : AiOutlineHeart}
             size={3}
             hover={false}
             clickable
           />
+          <NotificationIndicator number={1}/>
         </div>
       }
     >

@@ -9,7 +9,7 @@ const Post = ({ post }) => (
 
 const Posts = ({ posts }) => {
   return (
-    <div className="grid grid-cols-3 gap-1 md:gap-6 auto-rows-fr">
+    <div className="grid grid-cols-3 gap-1 md:gap-6 auto-rows-fr mb-2 md:mb-10">
       {posts?.map((record) => (
         <Post key={record} post={record} />
       ))}

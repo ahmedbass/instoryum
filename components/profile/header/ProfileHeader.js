@@ -11,7 +11,7 @@ const ProfileHeader = (props) => {
         gap-y-4 pt-3 md:pb-10 md:border-b border-gray-300"
     >
       <div className="justify-self-start md:justify-self-center col-start-1 col-span-1 md:row-span-3 pl-3 pr-6">
-        <MyImg src="/demo_pp.jpg" size={3} rounded colorful />
+        <MyImg src="/demo_pp.jpg" size={4} rounded colorful />
       </div>
 
       <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-10 md:items-center">

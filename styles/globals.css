@@ -2,14 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-.w-18 {
-  width: 4.5rem;
-}
-
-.h-18 {
-  height: 4.5rem;
-}
-
+/* not working, idk how to make it work :( */
 .my-scrollbar {
   @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200
+}
+
+
+@layer base {
+  .w-18 {
+    width: 4.5rem;
+  }
+
+  .h-18 {
+    height: 4.5rem;
+  }
+
+  .row-center {
+    @apply flex items-center justify-center
+  }
+
+  .row-center-h {
+    @apply flex justify-center
+  }
+
+  .row-center-v {
+    @apply flex items-center
+  }
+
+  .col-center {
+    @apply flex flex-col justify-center items-center
+  }
+
+  .col-center-h {
+    @apply flex flex-col items-center
+  }
+
+  .col-center-v {
+    @apply flex flex-col justify-center
+  }
+
 }

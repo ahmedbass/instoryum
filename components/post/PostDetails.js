@@ -1,6 +1,6 @@
 import { getReadableDate } from "../../utils";
 
-const PostCaption = ({
+const PostDetails = ({
   username,
   caption,
   hashtags,
@@ -38,4 +38,4 @@ const PostCaption = ({
     </div>
   );
 };
-export default PostCaption;
+export default PostDetails;

@@ -1,28 +1,9 @@
 import MyIcon from "../ui/MyIcon";
 import { BiExpandAlt } from "react-icons/bi";
 import { useState } from "react";
+import PicCountIndicator from "../ui/PicCountIndicator";
 
-const PostPicture = ({ pictures, caption, picCountIndicators }) => {
-  // const imgPos = useSpring({ x: 0, y: 0 });
-  // const bindImgPos = useDrag((params) => {
-  //   console.log(params.offset[0], params.offset[1]);
-  //   // if (!expandPic) return;
-  //   if (params.xy[0] <= 0) return;
-  //   if (params.xy[1] <= 0) return;
-  //   imgPos.x.set(params.offset[0]);
-  //   imgPos.y.set(params.offset[1]);
-  // });
-
-  // {/*<animated.div*/}
-  // {/* {...bindImgPos()}*/}
-  // {/*  style={{*/}
-  // {/*    x: imgPos.x,*/}
-  // {/*    y: imgPos.y,*/}
-  // {/*    transform: `scale(${expandPic ? 4 : 1})`,*/}
-  // {/*  }}*/}
-  // {/*>*/}
-  // {/*</animated.div>*/}
-
+const PostPicture = ({ pictures, caption }) => {
   const [expandPic, setExpandPic] = useState(false);
   const size = "w-full h-full max-h-[75vh] lg:min-h-[65vh]";
   return (
@@ -48,7 +29,9 @@ const PostPicture = ({ pictures, caption, picCountIndicators }) => {
 
         {pictures.length > 1 && (
           <div className="flex justify-self-center">
-            {picCountIndicators(pictures.length)}
+            {pictures.map((picture, i) => (
+              <PicCountIndicator key={i} isActive={i === 0} style={1} />
+            ))}
           </div>
         )}
       </div>
@@ -57,3 +40,23 @@ const PostPicture = ({ pictures, caption, picCountIndicators }) => {
 };
 
 export default PostPicture;
+
+// const imgPos = useSpring({ x: 0, y: 0 });
+// const bindImgPos = useDrag((params) => {
+//   console.log(params.offset[0], params.offset[1]);
+//   // if (!expandPic) return;
+//   if (params.xy[0] <= 0) return;
+//   if (params.xy[1] <= 0) return;
+//   imgPos.x.set(params.offset[0]);
+//   imgPos.y.set(params.offset[1]);
+// });
+
+// {/*<animated.div*/}
+// {/* {...bindImgPos()}*/}
+// {/*  style={{*/}
+// {/*    x: imgPos.x,*/}
+// {/*    y: imgPos.y,*/}
+// {/*    transform: `scale(${expandPic ? 4 : 1})`,*/}
+// {/*  }}*/}
+// {/*>*/}
+// {/*</animated.div>*/}

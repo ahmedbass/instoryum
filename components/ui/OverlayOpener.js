@@ -11,8 +11,7 @@ const OverlayOpener = ({
   const [isActive, setIsActive] = useState(false);
 
   const activate = (e) => {
-    console.log(e);
-    if (toggle && isActive) {
+    if (isActive && toggle) {
       deactivate(e);
     } else {
       setIsActive(true);
