@@ -5,8 +5,6 @@ const PostDetails = ({
   caption,
   hashtags,
   createdAt,
-  className,
-  br = "lg",
 }) => {
   const hashtagsStyled = (hash = hashtags) =>
     hash.map((h, i) => (
@@ -14,9 +12,9 @@ const PostDetails = ({
     ));
 
   return (
-    <div className={`group px-3 pb-3 ${className}`} tabIndex={0}>
+    <div className={`group px-3 pb-3`} tabIndex={0}>
       <p className="line-clamp-2 group-focus:line-clamp-none">
-        <span className={`font-semibold mr-2 ${br}:hidden`}>{username}</span>
+        <span className={`font-semibold mr-2`}>{username}</span>
 
         <span>
           {caption}

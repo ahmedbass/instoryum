@@ -1,24 +1,33 @@
 import MyIcon from "../ui/MyIcon";
-import { AiOutlineComment, AiOutlineHeart } from "react-icons/ai";
-import { RiSendPlaneLine } from "react-icons/ri";
-import { FiBookmark } from "react-icons/fi";
+import {AiOutlineComment, AiOutlineHeart} from "react-icons/ai";
+import {RiSendPlaneLine} from "react-icons/ri";
+import {FiBookmark} from "react-icons/fi";
+import MyButton from "../ui/MyButton";
 
-const PostActions = () => (
-  <div className="grid grid-cols-3">
-    <div className="flex space-x-1 sm:space-x-4">
-      <MyIcon Icon={AiOutlineHeart} />
-      <MyIcon Icon={AiOutlineComment} />
-      <MyIcon Icon={RiSendPlaneLine} />
+const PostActions = ({setShowComments}) => (
+    <div className="flex justify-between">
+      <div className="flex space-x-1 sm:space-x-4">
+        <MyButton text>
+          <MyIcon Icon={AiOutlineHeart}/>
+        </MyButton>
+        <MyButton text onClick={setShowComments}>
+          <MyIcon Icon={AiOutlineComment}/>
+        </MyButton>
+        <MyButton text>
+          <MyIcon Icon={RiSendPlaneLine}/>
+        </MyButton>
+      </div>
+
+      {/*{picturesCount > 1 && (*/}
+      {/*  <div className="flex justify-self-center sm:hidden">*/}
+      {/*    {picCountIndicators(picturesCount)}*/}
+      {/*  </div>*/}
+      {/*)}*/}
+
+      <MyButton text>
+        <MyIcon Icon={FiBookmark}/>
+      </MyButton>
     </div>
-
-    {/*{picturesCount > 1 && (*/}
-    {/*  <div className="flex justify-self-center sm:hidden">*/}
-    {/*    {picCountIndicators(picturesCount)}*/}
-    {/*  </div>*/}
-    {/*)}*/}
-
-    <MyIcon Icon={FiBookmark} className="col-start-3 justify-self-end" />
-  </div>
 );
 
 export default PostActions;

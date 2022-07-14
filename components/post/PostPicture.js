@@ -5,7 +5,7 @@ import PicCountIndicator from "../ui/PicCountIndicator";
 
 const PostPicture = ({ pictures, caption }) => {
   const [expandPic, setExpandPic] = useState(false);
-  const size = "w-full h-full max-h-[75vh] lg:min-h-[65vh]";
+  const size = "w-full h-fit max-h-[75vh] lg:min-h-[65vh]";
   return (
     <div
       className={`${size} relative bg-cover bg-no-repeat bg-center bg-gray-300 bg-blend-multiply`}

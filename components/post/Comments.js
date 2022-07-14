@@ -47,10 +47,10 @@ const Comment = ({ comment, createdAt, likes, mentions, replies, username, userP
   );
 };
 
-const Comments = ({ comments, br = "2xl" }) => {
-  if (!comments?.length) return;
+const Comments = ({ comments, showComments }) => {
+  if (!comments?.length || !showComments) return;
   return (
-    <div className={`${br}:order-2 hidden ${br}:flex flex-col flex-grow p-2 sm:p-4 space-y-8`}>
+    <div className={`flex flex-col flex-grow p-2 sm:p-4 space-y-8`}>
       {comments.map((comment) => (
         <Comment key={comment.id} {...comment} />
       ))}

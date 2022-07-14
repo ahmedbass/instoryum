@@ -18,7 +18,9 @@ const SearchInput = ({ showInSm }) => {
   const clearSearchInput = () => setInputValue("");
   const handleEscapeBlur = (e) => e.key === "Escape" && e.target.blur();
 
-  const searchIcon = <MyIcon Icon={HiOutlineSearch} size={2} className="mr-3 text-gray-400" />;
+  const searchIcon = (
+    <MyIcon Icon={HiOutlineSearch} size={2} hover={false} className="mr-3 text-gray-400" />
+  );
   const clearBtn = (
     <button onClick={clearSearchInput}>
       <MyIcon Icon={XIcon} size={1} className="bg-gray-300 text-white rounded-full p-0.5" />

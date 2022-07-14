@@ -4,8 +4,7 @@ import MyButton from "../../ui/MyButton";
 
 const EmptyChatView = (props) => {
   return (
-      <div
-          className="hidden md:col-center space-y-6 text-center p-2 text-gray-500">
+    <div className="hidden md:col-center space-y-6 text-center p-2 text-gray-500">
       <span className="rounded-full border-2 border-gray-500 w-28 h-28 relative">
         <MyIcon
           Icon={RiSendPlaneFill}
@@ -20,9 +19,8 @@ const EmptyChatView = (props) => {
       </p>
 
       <MyButton
-        onClick={() =>
-          console.log("open modal for people list to send messages to")
-        }
+        filled
+        onClick={() => console.log("open modal for people list to send messages to")}
       >
         Send Message
       </MyButton>

@@ -2,9 +2,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { BsGearWide } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
 import OverlayCard from "../ui/OverlayCard";
 import OverlayOpener from "../ui/OverlayOpener";
+import { useSession } from "next-auth/react";
+import MyButton from "../ui/MyButton";
 
 const ProfileList = () => {
   const links = [

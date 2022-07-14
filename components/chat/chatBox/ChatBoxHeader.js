@@ -1,9 +1,9 @@
 import MyImg from "../../ui/MyImg";
 import MyIcon from "../../ui/MyIcon";
 import {GoInfo} from "react-icons/go";
-import {TbVideo} from "react-icons/tb";
 import {IoChevronBack} from "react-icons/io5";
 import OnlineIndicator from "../../ui/OnlineIndicator";
+import {HiOutlineVideoCamera} from "react-icons/hi";
 
 const ChatBoxHeader = ({chat, closeChat}) => (
     <div
@@ -18,7 +18,7 @@ const ChatBoxHeader = ({chat, closeChat}) => (
         <p className="text-sm text-gray-400 truncate">Active 3h ago</p>
       </div>
       <div className="relative">
-        <MyIcon Icon={TbVideo} className="w-8 h-8"/>
+        <MyIcon Icon={HiOutlineVideoCamera} className="w-8 h-8"/>
       </div>
       <MyIcon Icon={GoInfo}/>
     </div>

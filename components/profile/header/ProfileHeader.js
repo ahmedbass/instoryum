@@ -1,7 +1,7 @@
 import MyImg from "../../ui/MyImg";
 import ProfileStats from "./ProfileStats";
 import ProfileInfo from "./ProfileInfo";
-import ProfileActions from "./ProfileAction";
+import ProfileActions from "./ProfileActions";
 import Username from "./Username";
 
 const ProfileHeader = (props) => {
