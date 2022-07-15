@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
-const Logo = ({ logo = 1, layout }) => {
+const Logo = ({ logo = 1, layout, noLink }) => {
   const logo1 =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png";
   const logo2 =
@@ -11,11 +11,15 @@ const Logo = ({ logo = 1, layout }) => {
 
   return (
     <div className={layout}>
-      <Link href="/">
-        <a>
-          <Image src={logo} alt="Logo" objectFit="contain" layout="fill" />
-        </a>
-      </Link>
+      {noLink ? (
+        <Image src={logo} alt="Logo" objectFit="contain" layout="fill" />
+      ) : (
+        <Link href="/">
+          <a>
+            <Image src={logo} alt="Logo" objectFit="contain" layout="fill" />
+          </a>
+        </Link>
+      )}
     </div>
   );
 };

@@ -44,7 +44,7 @@ const MyImg = ({
         alt={alt}
         className={`${imageSize} bg-gray-300 ${
           (border || colorful) && "border-2 border-white bg-gray-200"
-        } ${rounded && "rounded-full"} ${contain ? "contain" : "object-cover"} ${className}`}
+        } ${rounded && "rounded-full"} ${contain ? "object-contain" : "object-cover"} ${className}`}
       />
     </div>
   );

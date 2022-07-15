@@ -35,7 +35,7 @@ const MyButton = ({
       : "border border-blue-500 active:border-blue-400 disabled:border-blue-300";
   }
 
-  const resp = responsive ? "flex-1 min-w-fit" : "";
+  const resp = responsive ? "flex-grow min-w-fit w-full" : "";
 
   return (
     <button
