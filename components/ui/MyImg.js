@@ -17,36 +17,47 @@ const getImageSize = (size) => {
   }
 };
 
+const Border = ({ children, rounded = true, border, colorful, size }) => {
+  if (!border && !colorful) return children;
+  const p = size <= 3 ? "p-0.5" : "p-1";
+  return (
+    <div
+      className={` ${rounded && "rounded-full"} overflow-hidden w-fit h-fit
+      ${border && `${p} bg-gray-200`}
+      ${colorful && `${p} bg-gradient-to-bl from-purple-600 via-red-500 to-yellow-300`}`}
+    >
+      {children}
+    </div>
+  );
+};
+
 const MyImg = ({
   src,
   alt = "",
   size = 3,
   rounded = false,
-  soft = false,
   contain = false,
   border = false,
   colorful = false,
   className = "",
 }) => {
   const imageSize = getImageSize(size);
-  const colorfulBorder = "";
-  // "p-[.2rem] bg-gradient-to-bl from-purple-500 via-red-500 to-yellow-300";
-  // "p-0.5 border-2 border-l-amber-300 border-r-purple-500 border-y-red-500"
+  const imgBorder = "border-" + (size - (size % 2) >= 2 ? size - (size % 2) : 2);
 
   return (
-    <div
-      className={` ${rounded && "rounded-full"} overflow-hidden min-w-fit h-fit
-      ${border && "p-0.5 bg-gray-200"}
-      ${colorful && "p-0.5 bg-gradient-to-bl from-purple-500 via-red-500 to-yellow-300"}`}
-    >
-      <img
-        src={src}
-        alt={alt}
-        className={`${imageSize} bg-gray-300 ${
-          (border || colorful) && "border-2 border-white bg-gray-200"
-        } ${rounded && "rounded-full"} ${contain ? "object-contain" : "object-cover"} ${className}`}
-      />
-    </div>
+    <Border rounded={rounded} border={border} colorful={colorful} size={size}>
+      <div className="min-w-max">
+        <img
+          src={src}
+          alt={alt}
+          className={`${imageSize} bg-gray-300  ${
+            (border || colorful) && `${imgBorder} border-white`
+          } ${rounded && "rounded-full"} ${
+            contain ? "object-contain" : "object-cover"
+          } ${className}`}
+        />
+      </div>
+    </Border>
   );
 };
 export default MyImg;

@@ -1,4 +1,4 @@
-import { getProviders, signIn } from "next-auth/react";
+import { getProviders, getSession, signIn } from "next-auth/react";
 import Image from "next/image";
 import Logo from "../components/header/Logo";
 import MyButton from "../components/ui/MyButton";
@@ -16,7 +16,7 @@ const Input = ({ type = "text", placeholder, className }) => (
 );
 
 const SlideImage = ({ src }) => (
-  <Image src={src} alt="pic1" width={250} height={541} objectFit={"contain"} />
+  <Image src={src} alt="insta-screenshot" width={320} height={600} objectFit={"contain"} />
 );
 
 const Or = () => (
@@ -66,22 +66,22 @@ const LoginFB = ({ providerId }) => (
     className="my-6 flex space-x-2"
     onClick={() => signIn(providerId, { callbackUrl: "/" })}
   >
-    <MyIcon Icon={ImFacebook2} hover={false} className="text-blue-800" />
+    <MyIcon Icon={ImFacebook2} hover={false} size={2} className="text-blue-700" />
     <p>Log in with Facebook</p>
   </MyButton>
 );
 
 const LoginPage = ({ providers }) => {
   const [inOrUp, setInOrUp] = useState(true);
-  console.log(providers);
+  // console.log(providers);
   return (
     <>
-      <div className="w-full h-full row-center-h sm:row-center">
+      <div className="w-full h-full row-center-h sm:pt-16">
         <div
-          className="relative hidden lg:block w-128 h-full p-4
-          bg-[url('/insta_screens/bg.png')] bg-no-repeat bg-center"
+          className="relative hidden lg:block w-128
+          bg-[url('/insta_screens/bg.png')] bg-no-repeat bg-top bg-contain"
         >
-          <div className="absolute bottom-36 right-[5.1rem]">
+          <div className="absolute top-7 left-[29.2%]">
             <SlideImage src={"/insta_screens/s1.png"} />
             {/*<SlideImage src={"/insta_screens/s2.png"} />*/}
             {/*<SlideImage src={"/insta_screens/s3.png"} />*/}
@@ -108,7 +108,7 @@ const LoginPage = ({ providers }) => {
         </div>
       </div>
 
-      <div className="p-6 text-center">
+      <div className="pb-10 text-center">
         <About />
       </div>
     </>
@@ -117,6 +117,13 @@ const LoginPage = ({ providers }) => {
 export default LoginPage;
 
 export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (session) {
+    return {
+      redirect: { destination: "/", permanent: false },
+    };
+  }
+
   const providers = await getProviders();
   return {
     props: {

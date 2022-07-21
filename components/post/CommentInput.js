@@ -6,7 +6,7 @@ const CommentInput = ({ className }) => {
   const [inputValue, setInputValue] = useState("");
   return (
     <div
-      className={`w-full border-t flex justify-between items-center space-x-2 bg-white py-2 px-4 ${className}`}
+      className={`w-full border-t hidden md:flex justify-between items-center space-x-2 bg-white py-2 px-4 ${className}`}
     >
       <MyIcon Icon={VscSmiley} />
 

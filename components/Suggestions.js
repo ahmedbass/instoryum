@@ -1,7 +1,7 @@
 import MyImg from "./ui/MyImg";
 import MyButton from "./ui/MyButton";
 import Link from "next/link";
-import About from "./About";
+import { signOut } from "next-auth/react";
 
 const suggestions = [
   {
@@ -55,27 +55,30 @@ const Rec = ({ img, imgSize = 1, username, snippet, actionName, actionOnClick })
         </Link>
         <p className="text-gray-500 text-sm">{snippet}</p>
       </div>
-      <MyButton text small onClick={actionOnClick}>
+      <MyButton small onClick={actionOnClick}>
         {actionName}
       </MyButton>
     </div>
   );
 };
 
-const Suggestions = ({}) => {
+const Suggestions = ({ session }) => {
+  const user = session?.user || { username: "ahmed__3d", name: "Ahmed 3D", image: "" };
+
   return (
-    <div className="hidden lg:flex flex-col h-fit space-y-4 sticky top-20">
+    <>
       <Rec
-        img={"https://i.pravatar.cc/150?img=68"}
+        img={user.image || "https://i.pravatar.cc/150?img=53"}
         imgSize={2}
-        username={"ahmed__3d"}
-        snippet={"Ahmed 3D"}
+        username={user.username}
+        snippet={user.name}
         actionName={"Logout"}
+        actionOnClick={signOut}
       />
 
       <div className="flex justify-between">
         <p className="font-semibold text-gray-500 col-span-2">Suggestions For You</p>
-        <MyButton text small neutral>
+        <MyButton small neutral bold>
           View all
         </MyButton>
       </div>
@@ -91,11 +94,8 @@ const Suggestions = ({}) => {
           />
         ))}
       </div>
-
-      <About />
-    </div>
+    </>
   );
 };
-
 
 export default Suggestions;

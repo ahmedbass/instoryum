@@ -3,7 +3,7 @@ import { MY_SCROLL } from "../../ui/Layout";
 import { useEffect, useRef } from "react";
 import MyImg from "../../ui/MyImg";
 
-const Message = ({ message, isLastInSequence, isMyself }) => {
+const Message = ({ message, isFirstInSequence, isLastInSequence, isMyself }) => {
   const emojiStyle =
     isOnlyEmoji(message.message) && `text-4xl leading-tight bg-none border-none px-0 ml-6`;
   const myStyle =
@@ -13,9 +13,23 @@ const Message = ({ message, isLastInSequence, isMyself }) => {
   const layout = isMyself ? "self-end text-end" : "self-start text-start";
   const messageStyle = emojiStyle || (isMyself ? myStyle : othersStyle);
 
+  let roundStyle;
+  let perUserSpace = "mt-0.5 md:mt-1";
+  if (isFirstInSequence && isLastInSequence) {
+    roundStyle = "rounded-3xl";
+    perUserSpace = "mt-8";
+  } else if (isFirstInSequence) {
+    roundStyle = `rounded-3xl ${isMyself ? "rounded-br-lg" : "rounded-bl-lg"}`;
+    perUserSpace = "mt-8";
+  } else if (isLastInSequence) {
+    roundStyle = `rounded-3xl ${isMyself ? "rounded-tr-lg" : "rounded-tl-lg"}`;
+  } else {
+    roundStyle = `rounded-3xl ${isMyself ? "rounded-r-lg" : "rounded-l-lg"}`;
+  }
+
   return (
-    <li className={`first:mt-auto max-w-[80%] lg:max-w-[45%] relative ${layout}`}>
-      <div className={`border rounded-3xl px-4 py-2 ${messageStyle}`}>
+    <li className={`first:mt-auto max-w-[80%] lg:max-w-[45%] relative ${perUserSpace} ${layout}`}>
+      <div className={`px-4 py-2 border ${roundStyle} ${messageStyle}`}>
         <p>{applyLineBreaks(message.message)}</p>
       </div>
 
@@ -43,11 +57,12 @@ const ActualChat = ({ conversation }) => {
   useEffect(() => scrollToBottom("auto"), [id]);
   // useEffect(() => scrollToBottom("smooth"), [messages]);
   return (
-    <ul className={`col-center-h flex-grow px-6 pt-4 space-y-2  ${MY_SCROLL}`}>
+    <ul className={`col-center-h flex-grow px-6 pt-4 ${MY_SCROLL}`}>
       {messages.map((message, i, messages) => (
         <Message
           key={message.id}
           message={message}
+          isFirstInSequence={message.sender.username !== messages[i - 1]?.sender?.username}
           isLastInSequence={message.sender.username !== messages[i + 1]?.sender?.username}
           isMyself={message.sender.username.toLowerCase() === myUsername.toLowerCase()}
         />

@@ -7,13 +7,13 @@ import MyButton from "../ui/MyButton";
 const PostActions = ({setShowComments}) => (
     <div className="flex justify-between">
       <div className="flex space-x-1 sm:space-x-4">
-        <MyButton text>
+        <MyButton neutral>
           <MyIcon Icon={AiOutlineHeart}/>
         </MyButton>
-        <MyButton text onClick={setShowComments}>
+        <MyButton neutral onClick={setShowComments}>
           <MyIcon Icon={AiOutlineComment}/>
         </MyButton>
-        <MyButton text>
+        <MyButton neutral>
           <MyIcon Icon={RiSendPlaneLine}/>
         </MyButton>
       </div>
@@ -24,7 +24,7 @@ const PostActions = ({setShowComments}) => (
       {/*  </div>*/}
       {/*)}*/}
 
-      <MyButton text>
+      <MyButton neutral>
         <MyIcon Icon={FiBookmark}/>
       </MyButton>
     </div>

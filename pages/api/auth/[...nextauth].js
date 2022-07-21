@@ -22,7 +22,17 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+  session: {
+    maxAge: 2592000 * 12, //12 months
+  },
   pages: {
-    signIn: "/login"
-  }
+    signIn: "/login",
+  },
+  callbacks: {
+    async session({ session, token, user }) {
+      session.user.username = session.user.name.replace(" ", "_").toLocaleLowerCase();
+      session.user.uid = token.sub;
+      return session;
+    },
+  },
 });

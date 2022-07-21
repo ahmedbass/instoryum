@@ -3,7 +3,7 @@ import Post from "./Post";
 
 const Posts = (props) => {
   return (
-    <div className="col-center-h lg:items-start space-y-4 lg:space-y-8">
+    <div className="col-center-h lg:items-start md:space-y-4">
       {dummyPosts.map((post) => (
         <Post
           key={post.id}

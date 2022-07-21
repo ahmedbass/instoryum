@@ -18,8 +18,10 @@ const NotificationItem = ({ notification }) => {
           </p>
         </a>
       </Link>
-      <button className="bg-blue-500 text-white font-semibold rounded
-        px-1 py-0.5 sm:px-2 sm:py-1 text-sm sm:text-base ">
+      <button
+        className="bg-blue-500 text-white font-semibold rounded
+        px-1 py-0.5 sm:px-2 sm:py-1 text-sm sm:text-base "
+      >
         Follow
       </button>
     </li>

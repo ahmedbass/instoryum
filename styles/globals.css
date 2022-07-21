@@ -2,24 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* not working, idk how to make it work :( */
-.my-scrollbar {
-  @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200
-}
-
-
 @layer base {
-  .w-18 {
-    width: 4.5rem;
+  img {
+    @apply select-none
   }
 
-  .h-18 {
-    height: 4.5rem;
+  .absolute-center {
+    @apply absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]
+  }
+
+  .absolute-center-h {
+    @apply absolute left-[50%] -translate-x-[50%]
+  }
+
+  .absolute-center-v {
+    @apply absolute top-[50%] -translate-y-[50%]
   }
 
   .row-center {
     @apply flex items-center justify-center
   }
+
 
   .row-center-h {
     @apply flex justify-center
@@ -27,6 +30,10 @@
 
   .row-center-v {
     @apply flex items-center
+  }
+
+  .row-between {
+    @apply flex items-center justify-between
   }
 
   .col-center {
@@ -41,4 +48,62 @@
     @apply flex flex-col justify-center
   }
 
+  .col-between {
+    @apply flex flex-col justify-between items-center
+  }
+
+  .range {
+    @apply appearance-none h-5 w-5 rounded-full bg-blue-500 cursor-pointer;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    @apply range
+  }
+
+  input[type=range]::-moz-range-thumb {
+    @apply range
+  }
+
+  input[type=range]::-ms-thumb {
+    @apply range
+  }
+
+  /*input[type='range']::-webkit-slider-runnable-track {*/
+  /*  @apply appearance-none bg-blue-500 h-0.5*/
+  /*}*/
+}
+
+/* not working, idk how to make it work :( */
+.my-scrollbar {
+  @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200
+}
+
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 30;
+}
+
+.modal-content {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  background: #fff;
+  outline: none;
+  overflow: auto;
+  webkit-overflow-scrolling: touch;
 }

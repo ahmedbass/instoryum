@@ -14,7 +14,7 @@ const PostHeader = ({ user }) => {
         </a>
       </Link>
 
-      <MyButton text small onClick={() => console.log("show 'more' options")}>
+      <MyButton onClick={() => console.log("show 'more' options")}>
         <MyIcon Icon={FiMoreHorizontal} size={2} />
       </MyButton>
     </div>

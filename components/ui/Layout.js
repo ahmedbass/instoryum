@@ -1,11 +1,16 @@
 import Head from "next/head";
 import Header from "../header/Header";
+import { LOGIN_PAGE } from "../ProtectedPages";
+import { useRouter } from "next/router";
+import Modal from "react-modal";
 
 export const MY_SCROLL =
   "overflow-x-hidden overflow-y-auto sm:scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200";
+export const BACKGROUND_COLOR = "bg-gray-100";
 
 const Layout = ({ children }) => {
-  const BACKGROUND_COLOR = "bg-gray-100";
+  const { pathname } = useRouter();
+  const isAddHeader = ![LOGIN_PAGE].includes(pathname);
 
   return (
     <div className={`${BACKGROUND_COLOR} h-screen w-screen col-center-h ${MY_SCROLL}`}>
@@ -16,9 +21,9 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/logo.svg.webp" />
       </Head>
 
-      <Header />
+      {isAddHeader && <Header />}
 
-      <main className="relative flex-grow col-center-h md:pt-6 w-full md:w-[90%] max-w-6xl">
+      <main className="relative col-center-h md:pt-6 flex-grow w-full md:w-[90%] max-w-5xl">
         {children}
       </main>
     </div>

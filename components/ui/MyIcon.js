@@ -1,5 +1,7 @@
 const getIconSize = (size) => {
   switch (size) {
+    case 0.5:
+      return "w-3 h-3"
     case 1:
       return "w-4 h-4";
     case 2:
@@ -10,6 +12,8 @@ const getIconSize = (size) => {
       return "w-10 h-10 md:w-12 md:h-12";
     case 5:
       return "w-12 h-12 md:w-16 md:h-16";
+    case 6:
+      return "w-18 h-18 xs:w-20 xs:h-20 md:w-22 md:h-22";
   }
 };
 

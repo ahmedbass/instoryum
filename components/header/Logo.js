@@ -12,11 +12,11 @@ const Logo = ({ logo = 1, layout, noLink }) => {
   return (
     <div className={layout}>
       {noLink ? (
-        <Image src={logo} alt="Logo" objectFit="contain" layout="fill" />
+        <Image src={logo} alt="Logo" objectFit="contain" layout="fill" className="select-none" />
       ) : (
         <Link href="/">
           <a>
-            <Image src={logo} alt="Logo" objectFit="contain" layout="fill" />
+            <Image src={logo} alt="Logo" objectFit="contain" layout="fill" className="select-none"/>
           </a>
         </Link>
       )}

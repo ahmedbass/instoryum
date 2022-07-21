@@ -31,7 +31,7 @@ const OverlayOpener = ({
       tabIndex={0}
       onClick={activate}
       onBlur={deactivate}
-      className={className}
+      className={`relative ${className}`}
     >
       {opener}
       {isActive && children}

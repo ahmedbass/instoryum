@@ -5,7 +5,7 @@ const Likes = ({ likes }) => {
   return (
     <div className="flex-grow">
       {likes.length ? (
-        <MyButton bold>
+        <MyButton neutral bold>
           {likes.length} like{s}
         </MyButton>
       ) : (
@@ -19,7 +19,7 @@ const Comments = ({ comments, setShowComments }) => {
   if (!comments?.length) return;
   const s = comments.length > 1 ? "s" : "";
   return (
-    <MyButton onClick={setShowComments}>
+    <MyButton neutral onClick={setShowComments}>
       {comments.length} comment{s}
     </MyButton>
   );
@@ -29,7 +29,7 @@ const Shares = ({ shares }) => {
   if (!shares?.length) return;
   const s = shares.length > 1 ? "s" : "";
   return (
-    <MyButton>
+    <MyButton neutral>
       {shares.length} share{s}
     </MyButton>
   );
