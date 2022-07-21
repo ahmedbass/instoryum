@@ -1,24 +1,26 @@
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   createPostStep,
   modalState,
   postAspectRatio,
+  postCaption,
+  postLocation,
   processedImages,
   selectedImageIndex,
   selectedImages,
-} from "../../atom/CreatePostModalAtom";
+} from "../../atom/CreateNewPostAtom";
 import Modal from "react-modal";
 import MyButton from "../ui/MyButton";
 import { useEffect, useState } from "react";
 import MyCloseIcon from "../ui/MyCloseIcon";
-import ImageEditor from "./ImageSection/ImageEditor";
+import ImageEditor from "./StepOne_ImageEditing/ImageEditor";
 import { MAX_FILES_PER_POST } from "../../constants";
 import ConfirmDiscardPopup from "./ConfirmDiscardPopup";
-import ImageFilters, { defaultFilters } from "./ImageFilters";
+import ImageFilters, { defaultFilters } from "./StepOne_ImageEditing/ImageFilters";
 import DragAndDrop from "./DragAndDrop";
-import InfoSection from "./InfoSection";
-import getCroppedImg from "./ImageSection/cropImage";
-import ImageOutput from "./ImageOutput";
+import getCroppedImg from "./StepOne_ImageEditing/cropImage";
+import ImageOutput from "./StepTwo_PostUpload/ImageOutput";
+import InfoSection from "./StepTwo_PostUpload/InfoSection";
 
 const CloseButton = ({ onClick }) => (
   <MyButton className="absolute top-2 right-3" onClick={onClick}>
@@ -50,6 +52,8 @@ const CreateNewPost = () => {
   const [showConfirmDiscard, setShowConfirmDiscard] = useState(false);
   const [closeOnDiscard, setCloseOnDiscard] = useState(true);
   const [nextLoading, setNextLoading] = useState(false);
+  const setCaption = useSetRecoilState(postCaption);
+  const setLocation = useSetRecoilState(postLocation);
 
   useEffect(() => {
     setHeroIndex(selectedFiles.length - 1);
@@ -131,10 +135,17 @@ const CreateNewPost = () => {
     else discardPost();
   };
 
+  const onShareComplete = () => {
+    setCloseOnDiscard(true);
+    discardPost();
+  };
+
   const discardPost = () => {
     setShowConfirmDiscard(false);
     setSelectedFiles([]);
     setCreationStep(0);
+    setCaption("");
+    setLocation("");
 
     if (closeOnDiscard) setOpen(false);
   };
@@ -186,7 +197,7 @@ const CreateNewPost = () => {
             {creationStep === 2 && (
               <>
                 <ImageOutput />
-                <InfoSection />
+                <InfoSection onShareComplete={onShareComplete} />
               </>
             )}
           </div>

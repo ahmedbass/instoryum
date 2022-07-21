@@ -5,7 +5,7 @@ import AspectRatioControl from "./AspectRatioControl";
 import ZoomControl from "./ZoomControl";
 import ImagesNav from "../../ui/ImagesNav";
 import { useRecoilState } from "recoil";
-import { selectedImageIndex, selectedImages } from "../../../atom/CreatePostModalAtom";
+import { selectedImageIndex, selectedImages } from "../../../atom/CreateNewPostAtom";
 import DotCountIndicator from "../../ui/DotCountIndicator";
 import ImageActionButtons from "./ImageActionButtons";
 

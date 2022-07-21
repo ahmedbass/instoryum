@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { selectedImageIndex, selectedImages } from "../../../atom/CreatePostModalAtom";
+import { selectedImageIndex, selectedImages } from "../../../atom/CreateNewPostAtom";
 
 const MIN = 1;
 const MAX = 2;

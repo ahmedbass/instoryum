@@ -29,3 +29,13 @@ export const createPostStep = atom({
   key: "createPostStep",
   default: 0,
 });
+
+export const postCaption = atom({
+  key: "createPostCaption",
+  default: ""
+})
+
+export const postLocation = atom({
+  key: "createPostLocation",
+  default: ""
+})

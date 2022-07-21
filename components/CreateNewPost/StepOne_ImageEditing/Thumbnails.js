@@ -6,7 +6,7 @@ import { MAX_FILES_PER_POST } from "../../../constants";
 import FileInput from "../../ui/FileInput";
 import { VscAdd } from "react-icons/vsc";
 import { useRecoilState } from "recoil";
-import { selectedImageIndex, selectedImages } from "../../../atom/CreatePostModalAtom";
+import { selectedImageIndex, selectedImages } from "../../../atom/CreateNewPostAtom";
 
 const AddImageButton = ({ onSelect }) => (
   <li>

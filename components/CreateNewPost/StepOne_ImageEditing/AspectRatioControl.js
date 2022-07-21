@@ -1,7 +1,7 @@
 import { TbRectangle, TbRectangleVertical, TbSquare } from "react-icons/tb";
 import MyIcon from "../../ui/MyIcon";
 import { useRecoilState } from "recoil";
-import { postAspectRatio } from "../../../atom/CreatePostModalAtom";
+import { postAspectRatio } from "../../../atom/CreateNewPostAtom";
 
 const aspects = [
   // { name: "Original", aspect: 0 },

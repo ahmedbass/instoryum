@@ -1,7 +1,7 @@
 import { RiAddCircleFill, RiAddCircleLine } from "react-icons/ri";
 import MyIcon from "../ui/MyIcon";
 import { useRecoilState } from "recoil";
-import { modalState } from "../../atom/CreatePostModalAtom";
+import { modalState } from "../../atom/CreateNewPostAtom";
 import CreateNewPost from "../CreateNewPost/CreateNewPost";
 
 const NewPostButton = ({ isActive, onClick, onBlur }) => {

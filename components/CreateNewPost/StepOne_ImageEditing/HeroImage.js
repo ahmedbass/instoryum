@@ -5,7 +5,7 @@ import {
   postAspectRatio,
   selectedImageIndex,
   selectedImages,
-} from "../../../atom/CreatePostModalAtom";
+} from "../../../atom/CreateNewPostAtom";
 import {MY_SCROLL} from "../../ui/Layout";
 
 const HeroImage = () => {
@@ -66,7 +66,8 @@ const HeroImage = () => {
             maxZoom={2}
             zoomWithScroll={true}
             restrictPosition={true}
-            objectFit="horizontal-cover"
+            // objectFit="vertical-cover"
+            // disableAutomaticStylesInjection={true}
             style={{mediaStyle: !isPressed ? {filter: image.filterString} : ""}}
             classes={{
               containerClassName: `bg-gray-500`,
