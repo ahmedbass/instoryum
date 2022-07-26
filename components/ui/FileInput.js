@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { ACCEPTED_POST_FILES } from "../../constants";
+import { ACCEPTED_POST_FILES } from "../../lib/constants";
 
 const FileInput = ({ onSelect, children, accept = ACCEPTED_POST_FILES }) => {
   const ref = useRef();

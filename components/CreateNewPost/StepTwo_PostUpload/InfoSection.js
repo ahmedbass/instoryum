@@ -5,7 +5,7 @@ import AddLocation from "./AddLocation";
 import PostSettings from "./PostSettings";
 import UploadPost from "./UploadPost";
 
-const UserInfo = ({ src, username }) => (
+const UserInfo = ({ src, username = "username" }) => (
   <div className="row-center-v space-x-4 p-4">
     <MyImg src={src} size={1} rounded />
     <h3 className="font-semibold text-lg">{username}</h3>
@@ -17,8 +17,8 @@ const InfoSection = ({ onShareComplete }) => {
     <section
       className={`w-full md:w-[30vw] md:max-w-[25rem] h-full bg-white border-l border-gray-300 flex flex-col ${MY_SCROLL}`}
     >
-      <UserInfo username="username" />
-      <Caption maxCaption={2200} />
+      <UserInfo />
+      <Caption />
       <AddLocation />
       <PostSettings />
       <UploadPost onShareComplete={onShareComplete} />

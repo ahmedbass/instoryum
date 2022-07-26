@@ -1,5 +1,5 @@
 import Posts from "../components/post/Posts";
-import Stories from "../components/Story/Stories";
+import Stories from "../components/story/Stories";
 import Suggestions from "../components/Suggestions";
 import { getSession, useSession } from "next-auth/react";
 import About from "../components/About";
@@ -10,10 +10,10 @@ export default function Home() {
     <>
       <Stories />
 
-      <div className="w-full grid grid-cols-1 lg:grid-cols-[minmax(0,max-content)_minmax(34%,1fr)] md:mt-4 lg:gap-x-8">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-[minmax(60%,max-content)_minmax(18rem,33%)] md:mt-4 lg:gap-x-10">
         <Posts />
 
-        <div className="hidden lg:flex flex-col h-fit space-y-4 sticky top-20">
+        <div className="hidden lg:flex flex-col h-fit space-y-4 sticky top-20 col-start-2">
           <Suggestions session={session} />
           <About />
         </div>

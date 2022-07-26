@@ -1,4 +1,4 @@
-import { applyLineBreaks, getReadableDate, isOnlyEmoji } from "../../../utils";
+import { applyLineBreaks, getReadableDate, isOnlyEmoji } from "../../../lib/utils";
 import { MY_SCROLL } from "../../ui/Layout";
 import { useEffect, useRef } from "react";
 import MyImg from "../../ui/MyImg";

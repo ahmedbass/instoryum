@@ -5,70 +5,38 @@ import {
   postAspectRatio,
   postCaption,
   postLocation,
-  processedImages,
   selectedImageIndex,
   selectedImages,
 } from "../../atom/CreateNewPostAtom";
 import Modal from "react-modal";
-import MyButton from "../ui/MyButton";
 import { useEffect, useState } from "react";
-import MyCloseIcon from "../ui/MyCloseIcon";
 import ImageEditor from "./StepOne_ImageEditing/ImageEditor";
-import { MAX_FILES_PER_POST } from "../../constants";
+import { MAX_FILES_PER_POST } from "../../lib/constants";
 import ConfirmDiscardPopup from "./ConfirmDiscardPopup";
 import ImageFilters, { defaultFilters } from "./StepOne_ImageEditing/ImageFilters";
 import DragAndDrop from "./DragAndDrop";
-import getCroppedImg from "./StepOne_ImageEditing/cropImage";
 import ImageOutput from "./StepTwo_PostUpload/ImageOutput";
 import InfoSection from "./StepTwo_PostUpload/InfoSection";
-
-const CloseButton = ({ onClick }) => (
-  <MyButton className="absolute top-2 right-3" onClick={onClick}>
-    <MyCloseIcon hover={false} clickable />
-  </MyButton>
-);
-
-const NavButton = ({ text, onClick, disabled }) => {
-  return (
-    <MyButton className="absolute top-2 left-4" onClick={onClick} disabled={disabled}>
-      {text}
-    </MyButton>
-  );
-};
-
-const Header = ({ title }) => (
-  <h1 className="p-2 font-bold text-center text-lg text-black border-b border-gray-300 w-full">
-    {title}
-  </h1>
-);
+import Header from "./Header";
 
 const CreateNewPost = () => {
   const [open, setOpen] = useRecoilState(modalState);
   const [creationStep, setCreationStep] = useRecoilState(createPostStep);
-  const [aspectRatio, setAspectRatio] = useRecoilState(postAspectRatio);
   const [selectedFiles, setSelectedFiles] = useRecoilState(selectedImages);
-  const [heroIndex, setHeroIndex] = useRecoilState(selectedImageIndex);
-  const [outputImages, setOutputImages] = useRecoilState(processedImages);
-  const [showConfirmDiscard, setShowConfirmDiscard] = useState(false);
-  const [closeOnDiscard, setCloseOnDiscard] = useState(true);
-  const [nextLoading, setNextLoading] = useState(false);
+  const [aspectRatio, setAspectRatio] = useRecoilState(postAspectRatio);
+  const setHeroIndex = useSetRecoilState(selectedImageIndex);
   const setCaption = useSetRecoilState(postCaption);
   const setLocation = useSetRecoilState(postLocation);
+
+  const [showConfirmDiscard, setShowConfirmDiscard] = useState(false);
+  const [closeOnDiscard, setCloseOnDiscard] = useState(true);
 
   useEffect(() => {
     setHeroIndex(selectedFiles.length - 1);
     !selectedFiles.length && setCreationStep(0);
-  }, [selectedFiles.length, setCreationStep, setHeroIndex]);
+  }, [selectedFiles.length]);
 
-  useEffect(() => {
-    const updatedFiles = selectedFiles.map((file) => ({
-      ...file,
-      croppedAreaPixels: calcCroppedAreaPixels(file.width, file.height),
-    }));
-    setSelectedFiles(updatedFiles);
-  }, [aspectRatio]);
-
-  const calcCroppedAreaPixels = (width, height) => {
+  const calcCroppedArea = (width, height) => {
     let newWidth, newHeight;
     if (width > height) {
       newWidth = height * aspectRatio;
@@ -77,9 +45,9 @@ const CreateNewPost = () => {
       newWidth = width;
       newHeight = width * aspectRatio;
     }
-    const x = (width - newWidth) / 2;
-    const y = (height - newHeight) / 2;
-    return { x: x, y: y, width: newWidth, height: newHeight };
+    const middleX = (width - newWidth) / 2;
+    const middleY = (height - newHeight) / 2;
+    return { x: middleX, y: middleY, width: newWidth, height: newHeight };
   };
 
   const buildImageObject = (file) =>
@@ -92,7 +60,7 @@ const CreateNewPost = () => {
           width: imgObj.width,
           height: imgObj.height,
           type: file.type,
-          croppedAreaPixels: calcCroppedAreaPixels(imgObj.width, imgObj.height),
+          croppedAreaPixels: calcCroppedArea(imgObj.width, imgObj.height),
           crop: { x: 0, y: 0 },
           zoom: 1,
           filters: defaultFilters,
@@ -129,7 +97,7 @@ const CreateNewPost = () => {
     setCloseOnDiscard(false);
   };
 
-  const closeModal = () => {
+  const requestModalClose = () => {
     setCloseOnDiscard(true);
     if (selectedFiles.length) setShowConfirmDiscard(true);
     else discardPost();
@@ -142,35 +110,20 @@ const CreateNewPost = () => {
 
   const discardPost = () => {
     setShowConfirmDiscard(false);
-    setSelectedFiles([]);
     setCreationStep(0);
+    setSelectedFiles([]);
     setCaption("");
     setLocation("");
+    setAspectRatio(1);
 
     if (closeOnDiscard) setOpen(false);
-  };
-
-  const saveAndMoveNext = async () => {
-    setNextLoading(true);
-    try {
-      const processedImages = await Promise.all(
-        selectedFiles.map(
-          async (file) => await getCroppedImg(file.src, file.croppedAreaPixels, file.filterString)
-        )
-      );
-      setOutputImages(processedImages);
-      setCreationStep(2);
-    } catch (e) {
-      console.error(e);
-    }
-    setNextLoading(false);
   };
 
   return (
     <>
       <Modal
         isOpen={open}
-        onRequestClose={closeModal}
+        onRequestClose={requestModalClose}
         contentLabel="Create new post modal"
         shouldReturnFocusAfterClose={false}
         overlayClassName="modal-overlay"
@@ -179,7 +132,7 @@ const CreateNewPost = () => {
         className={`absolute-center w-screen h-screen md:w-fit md:h-[80%] md:max-h-[50rem] 
         flex flex-col bg-white border md:rounded-2xl md:overflow-hidden`}
       >
-        <Header title={creationStep === 1 ? "Edit" : "Create new post"} />
+        <Header onRequestClose={requestModalClose} />
 
         {creationStep === 0 && <DragAndDrop onSelect={addSelectedImages} />}
         {(creationStep === 1 || creationStep === 2) && (
@@ -190,6 +143,7 @@ const CreateNewPost = () => {
                   addToSelection={addSelectedImages}
                   clearSelection={clearSelection}
                   removeFromSelection={removeFromSelection}
+                  calcCroppedArea={calcCroppedArea}
                 />
                 <ImageFilters />
               </>
@@ -202,16 +156,6 @@ const CreateNewPost = () => {
             )}
           </div>
         )}
-
-        <CloseButton onClick={closeModal} />
-        {creationStep === 1 && (
-          <NavButton
-            onClick={saveAndMoveNext}
-            text={nextLoading ? "Loading..." : "Next"}
-            disabled={nextLoading}
-          />
-        )}
-        {creationStep === 2 && <NavButton text="Back" onClick={setCreationStep.bind(null, 1)} />}
       </Modal>
 
       <ConfirmDiscardPopup

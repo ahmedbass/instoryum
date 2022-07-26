@@ -26,7 +26,9 @@ const HeaderIcons = () => {
   return (
     <div className="flex items-center space-x-1 xs:space-x-2 sm:space-x-4 lg:space-x-6 justify-self-end col-start-3">
       <Link href="/">
-        <MyIcon Icon={currentActive === 1 ? HiHome : HiOutlineHome} hover={false} />
+        <a>
+          <MyIcon Icon={currentActive === 1 ? HiHome : HiOutlineHome} hover={false} />
+        </a>
       </Link>
 
       <Link href="/chat">

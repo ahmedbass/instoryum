@@ -3,7 +3,7 @@ import ChatBox from "../components/chat/chatBox/ChatBox";
 import ChatList from "../components/chat/chatList/ChatList";
 import {useEffect, useState} from "react";
 import minifaker from "minifaker";
-import {getRandomProfilePic} from "../utils";
+import {getRandomProfilePic} from "../lib/utils";
 
 const ChatPage = (props) => {
   const [selectedChat, setSelectedChat] = useState({});

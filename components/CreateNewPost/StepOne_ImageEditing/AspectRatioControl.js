@@ -1,17 +1,28 @@
 import { TbRectangle, TbRectangleVertical, TbSquare } from "react-icons/tb";
 import MyIcon from "../../ui/MyIcon";
 import { useRecoilState } from "recoil";
-import { postAspectRatio } from "../../../atom/CreateNewPostAtom";
+import { postAspectRatio, selectedImages } from "../../../atom/CreateNewPostAtom";
+import { useEffect } from "react";
 
 const aspects = [
   // { name: "Original", aspect: 0 },
   { name: "1:1", value: 1, icon: TbSquare },
   { name: "4:5", value: 4 / 5, icon: TbRectangleVertical },
+  // { name: "16:9", value: 16 / 9, icon: TbRectangle },
   { name: "16:10", value: 16 / 10, icon: TbRectangle },
 ];
 
-const AspectRatioControl = () => {
+const AspectRatioControl = ({ calcCroppedAreaPixels }) => {
   const [aspectRatio, setAspectRatio] = useRecoilState(postAspectRatio);
+  const [selectedFiles, setSelectedFiles] = useRecoilState(selectedImages);
+
+  useEffect(() => {
+    const updatedFiles = selectedFiles.map((file) => ({
+      ...file,
+      croppedAreaPixels: calcCroppedAreaPixels(file.width, file.height),
+    }));
+    setSelectedFiles(updatedFiles);
+  }, [aspectRatio]);
 
   return (
     <ul className={`absolute bottom-16 left-16 z-10 rounded-lg w-32 bg-black/50`}>

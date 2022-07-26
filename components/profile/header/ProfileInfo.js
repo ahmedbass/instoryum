@@ -1,4 +1,4 @@
-import {applyLineBreaks} from "../../../utils";
+import {applyLineBreaks} from "../../../lib/utils";
 
 const Info = ({name, bio, website, className}) => (
     <div className={`text-sm sm:text-base md:text-lg leading-5 ${className}`}>

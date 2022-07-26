@@ -45,8 +45,8 @@ const MyImg = ({
   const imgBorder = "border-" + (size - (size % 2) >= 2 ? size - (size % 2) : 2);
 
   return (
-    <Border rounded={rounded} border={border} colorful={colorful} size={size}>
-      <div className="min-w-max">
+    <div className="min-w-max">
+      <Border rounded={rounded} border={border} colorful={colorful} size={size}>
         <img
           src={src}
           alt={alt}
@@ -56,8 +56,8 @@ const MyImg = ({
             contain ? "object-contain" : "object-cover"
           } ${className}`}
         />
-      </div>
-    </Border>
+      </Border>
+    </div>
   );
 };
 export default MyImg;

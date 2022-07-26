@@ -1,6 +1,6 @@
 import { MY_SCROLL } from "../../ui/Layout";
 import MyButton from "../../ui/MyButton";
-import { scaleNumbers } from "../../../utils";
+import { scaleNumbers } from "../../../lib/utils";
 import { useRecoilState } from "recoil";
 import { selectedImageIndex, selectedImages } from "../../../atom/CreateNewPostAtom";
 

@@ -1,10 +1,11 @@
 import MyIcon from "../../ui/MyIcon";
 import { VscSmiley } from "react-icons/vsc";
-import { formatNumber } from "../../../utils";
+import { formatNumber } from "../../../lib/utils";
 import { useRecoilState } from "recoil";
 import { postCaption } from "../../../atom/CreateNewPostAtom";
 
-const Caption = ({ maxCaption }) => {
+const Caption = () => {
+  const maxCaption = 2200
   const [caption, setCaption] = useRecoilState(postCaption);
   return (
     <>

@@ -1,7 +1,8 @@
 import MyImg from "../ui/MyImg";
-import { getReadableDate } from "../../utils";
+import { getReadableDate } from "../../lib/utils";
 import MyIcon from "../ui/MyIcon";
 import { AiOutlineHeart } from "react-icons/ai";
+import {MY_SCROLL} from "../ui/Layout";
 
 const LikesCount = ({ likes }) => {
   if (!likes?.length) return;
@@ -22,19 +23,19 @@ const RepliesCount = ({ replies }) => {
   );
 };
 
-const Comment = ({ comment, createdAt, likes, mentions, replies, username, userPic }) => {
+const Comment = ({ comment, author, createdAt, likes, mentions, replies }) => {
   return (
     <div className="flex justify-between space-x-4">
-      <MyImg src={userPic} alt="" size={1} rounded border />
+      <MyImg src={author.profilePicture} alt="" size={1} rounded border />
 
       <div className="flex flex-col flex-grow space-y-3">
         <p className="space-x-2">
-          <span className="font-semibold">{username}</span>
+          <span className="font-semibold">{author.username}</span>
           <span>{comment}</span>
         </p>
 
         <div className="flex space-x-3 text-sm text-gray-500">
-          <span>{getReadableDate(createdAt, true)}</span>
+          <span>{getReadableDate(createdAt?.seconds * 1000, true)}</span>
           <LikesCount likes={likes} />
           <button className="font-semibold">Reply</button>
         </div>
@@ -47,14 +48,14 @@ const Comment = ({ comment, createdAt, likes, mentions, replies, username, userP
   );
 };
 
-const Comments = ({ comments, showComments }) => {
-  if (!comments?.length || !showComments) return;
+const PostComments = ({ comments }) => {
+  if (!comments?.length) return;
   return (
-    <div className={`flex flex-col flex-grow p-2 sm:p-4 space-y-8`}>
+    <div className={`flex flex-col flex-grow p-2 sm:p-4 space-y-4 `}>
       {comments.map((comment) => (
         <Comment key={comment.id} {...comment} />
       ))}
     </div>
   );
 };
-export default Comments;
+export default PostComments;

@@ -10,7 +10,7 @@ const MyButton = ({
   className,
   ...rest
 }) => {
-  const basics = "rounded row-center inline-block select-none";
+  const basics = "rounded row-center inline-block";
 
   let containerStyle = "";
   let textStyle = neutral
@@ -21,7 +21,7 @@ const MyButton = ({
 
   if (filled) {
     size = small ? "text-sm px-1.5 py-0.5" : "text-base px-3 py-1.5";
-    textStyle = "font-semibold text-white";
+    textStyle = "font-semibold text-white select-none";
     containerStyle = neutral
       ? "bg-gray-500 active:bg-gray-400 disabled:bg-gray-300"
       : "bg-blue-500 active:bg-blue-400 disabled:bg-blue-300";

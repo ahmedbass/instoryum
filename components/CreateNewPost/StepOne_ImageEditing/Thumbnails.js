@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import FloatingIcon from "../../ui/FloatingIcon";
 import { MdClose } from "react-icons/md";
-import { MAX_FILES_PER_POST } from "../../../constants";
+import { MAX_FILES_PER_POST } from "../../../lib/constants";
 import FileInput from "../../ui/FileInput";
 import { VscAdd } from "react-icons/vsc";
 import { useRecoilState } from "recoil";

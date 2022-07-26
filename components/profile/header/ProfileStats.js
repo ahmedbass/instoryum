@@ -1,4 +1,4 @@
-import {formatNumber} from "../../../utils";
+import {formatNumber} from "../../../lib/utils";
 
 const Stat = ({number, thing}) => (
     <button
