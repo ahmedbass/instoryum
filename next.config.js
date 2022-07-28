@@ -2,8 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["firebasestorage.googleapis.com", "upload.wikimedia.org", "www.pngkey.com"]
-  }
+    domains: ["firebasestorage.googleapis.com", "upload.wikimedia.org", "www.pngkey.com"],
+  },
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 module.exports = nextConfig;

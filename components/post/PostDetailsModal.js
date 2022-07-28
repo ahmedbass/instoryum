@@ -1,15 +1,15 @@
 import { useRecoilState } from "recoil";
 import { postDetailsModalAtom, selectedPostAtom } from "../../atom/PostDetailsAtom";
-import PostHeader from "./PostHeader";
-import PostCaption from "./PostCaption";
-import PostComments from "./PostComments";
-import CommentInput from "./CommentInput";
-import MyModal from "../ui/MyModal";
-import PostStats from "./PostStats/PostStats";
-import PostActions, { likePost, Share } from "./PostActions";
-import PostPictures from "./PostPictures";
 import { MY_SCROLL } from "../ui/Layout";
 import MyBackIcon from "../ui/MyBackIcon";
+import MyModal from "../ui/MyModal";
+import CommentInput from "./CommentInput";
+import PostActions, { likePost, Share } from "./PostActions";
+import PostCaption from "./PostCaption";
+import PostComments from "./PostComments";
+import PostHeader from "./PostHeader";
+import PostPictures from "./PostPictures";
+import PostStats from "./PostStats/PostStats";
 
 const PostDetailsModal = () => {
   const [open, setOpen] = useRecoilState(postDetailsModalAtom);
@@ -41,7 +41,7 @@ const PostDetailsModal = () => {
       </div>
 
       <div className=" bg-white w-full h-full md:w-[35%] md:min-w-[26rem] lg:min-w-[30rem] flex flex-col">
-        <div className="row-center-v md:hidden p-4 pb-2 space-x-6">
+        <div className="row-center-v md:hidden p-4 pb-2 space-x-6 h-fit">
           <MyBackIcon onClick={closeModal} />
           <h2 className="text-lg font-semibold flex-grow">Comments</h2>
           <Share />
@@ -65,7 +65,7 @@ const PostDetailsModal = () => {
           <PostComments comments={post.comments} />
         </div>
 
-        <div className="p-4 border-t space-y-4 hidden md:block">
+        <div className="p-4 border-t space-y-4 hidden md:block h-fit">
           <PostActions isLiked={isLiked} postId={post.id} />
           <PostStats likes={post.likes} />
         </div>

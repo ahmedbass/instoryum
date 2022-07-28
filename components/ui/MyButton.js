@@ -7,6 +7,7 @@ const MyButton = ({
   bold,
   small,
   responsive,
+  disabled,
   className,
   ...rest
 }) => {
@@ -35,12 +36,13 @@ const MyButton = ({
       : "border border-blue-500 active:border-blue-400 disabled:border-blue-300";
   }
 
-  const resp = responsive ? "min-w-fit w-full" : "";
+  const resp = responsive ? "min-w-fit w-full" : "w-fit";
 
   return (
     <button
       className={`${containerStyle} ${textStyle} ${size} ${resp} ${basics} ${className}`}
       onClick={onClick}
+      disabled={disabled}
       {...rest}
     >
       {children}

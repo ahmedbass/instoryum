@@ -1,8 +1,7 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Header from "../header/Header";
 import { LOGIN_PAGE } from "../ProtectedPages";
-import { useRouter } from "next/router";
-import Modal from "react-modal";
 
 export const MY_SCROLL =
   "overflow-x-hidden overflow-y-auto sm:scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200";

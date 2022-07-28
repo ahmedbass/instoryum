@@ -2,7 +2,6 @@ import MyImg from "../ui/MyImg";
 import { getReadableDate } from "../../lib/utils";
 import MyIcon from "../ui/MyIcon";
 import { AiOutlineHeart } from "react-icons/ai";
-import {MY_SCROLL} from "../ui/Layout";
 
 const LikesCount = ({ likes }) => {
   if (!likes?.length) return;
@@ -52,8 +51,8 @@ const PostComments = ({ comments }) => {
   if (!comments?.length) return;
   return (
     <div className={`flex flex-col flex-grow p-2 sm:p-4 space-y-4 `}>
-      {comments.map((comment) => (
-        <Comment key={comment.id} {...comment} />
+      {comments.map((comment, i) => (
+        <Comment key={comment.id + i.toString()} {...comment} />
       ))}
     </div>
   );

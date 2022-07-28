@@ -36,7 +36,7 @@ const ZoomImage = () => {
   return (
     <FloatingIcon
       icon={BiExpandAlt}
-      className="absolute bottom-2 left-4  z-10"
+      className="absolute bottom-2 left-2  z-10"
       onClick={() => swiper.zoom.toggle()}
     />
   );

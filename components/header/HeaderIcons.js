@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 import NotificationIndicator from "../ui/NotificationIndicator";
 
 const HeaderIcons = () => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   const routerName = useRouter().pathname;
   const [currentActive, setCurrentActive] = useState(1);
@@ -55,7 +55,7 @@ const HeaderIcons = () => {
       />
 
       <ProfileButton
-        image={session?.user.image}
+        // image={session?.user.image}
         isActive={currentActive === 3}
         onClick={() => setCurrentActive(3)}
         onBlur={onBlur}

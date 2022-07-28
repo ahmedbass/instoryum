@@ -36,7 +36,7 @@ const CommentInput = ({ postId, hideInSm = true }) => {
 
   return (
     <div
-      className={`w-full border-t justify-between items-center space-x-2 bg-white py-2 px-4 ${
+      className={`w-full border-t justify-between items-center space-x-2 bg-white py-2 px-4 h-fit ${
         hideInSm ? "hidden md:flex" : "flex"
       }`}
     >

@@ -1,7 +1,7 @@
 const getIconSize = (size) => {
   switch (size) {
     case 0.5:
-      return "w-3 h-3"
+      return "w-3 h-3";
     case 1:
       return "w-4 h-4";
     case 2:
@@ -27,11 +27,11 @@ const MyIcon = ({
   ...rest
 }) => {
   const iconSize = className?.includes("w-") ? "" : getIconSize(size);
+  const c = className?.includes("text-") ? "" : "text-gray-700";
   return (
     <Icon
-      className={`${iconSize} min-w-fit text-gray-700 ${
-        (onClick || clickable) && "cursor-pointer active:text-gray-400"
-      } ${hover && "hover:text-gray-400"} ${className}`}
+      className={`${iconSize} ${c} min-w-fit ${hover && "hover:text-gray-400"}
+       ${(onClick || clickable) && "cursor-pointer active:text-gray-400"} ${className}`}
       onClick={onClick}
       {...rest}
     />
