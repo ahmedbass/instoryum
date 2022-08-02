@@ -1,3 +1,5 @@
+import MyLoader from "./MyLoader";
+
 const MyButton = ({
   children,
   onClick,
@@ -9,9 +11,10 @@ const MyButton = ({
   responsive,
   disabled,
   className,
-  ...rest
+  loading,
+  ...props
 }) => {
-  const basics = "rounded row-center inline-block";
+  const basics = "rounded row-center";
 
   let containerStyle = "";
   let textStyle = neutral
@@ -43,8 +46,9 @@ const MyButton = ({
       className={`${containerStyle} ${textStyle} ${size} ${resp} ${basics} ${className}`}
       onClick={onClick}
       disabled={disabled}
-      {...rest}
+      {...props}
     >
+      {loading && <MyLoader show={loading} size={0.5} />}
       {children}
     </button>
   );

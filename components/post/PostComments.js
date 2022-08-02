@@ -1,5 +1,5 @@
 import MyImg from "../ui/MyImg";
-import { getReadableDate } from "../../lib/utils";
+import { getDateDistance } from "../../lib/utils";
 import MyIcon from "../ui/MyIcon";
 import { AiOutlineHeart } from "react-icons/ai";
 
@@ -34,7 +34,7 @@ const Comment = ({ comment, author, createdAt, likes, mentions, replies }) => {
         </p>
 
         <div className="flex space-x-3 text-sm text-gray-500">
-          <span>{getReadableDate(createdAt?.seconds * 1000, true)}</span>
+          <span>{getDateDistance(createdAt?.seconds * 1000, true)}</span>
           <LikesCount likes={likes} />
           <button className="font-semibold">Reply</button>
         </div>

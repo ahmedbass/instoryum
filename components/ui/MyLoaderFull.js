@@ -5,7 +5,8 @@ const MyLoaderFull = ({show = true}) => {
   return (
       <div
           className="bg-white fixed top-0 left-0 w-screen h-screen col-center z-50 overflow-hidden">
-        <MyLogo logo={2} noLink layout="animate-pulse w-20 h-20"/>
+        <MyLogo logo={2} noLink layout="w-20 h-20"/>
+        {/*animate-pulse*/}
         <div className="absolute bottom-10 text-center">
           <h1
               className="font-semibold text-xl tracking-wider text-transparent bg-clip-text

@@ -28,7 +28,7 @@ const PostDetailsModal = () => {
       onRequestClose={closeModal}
       label="Post details modal"
       closeBtn={false}
-      className={`absolute-center md:max-w-[90%] md:h-[90%] md:w-[80rem] flex bg-gray-900 border-none`}
+      className={`absolute-center md:max-w-[90%] md:h-[90%] md:w-[80rem] bg-gray-900 border-none flex`}
     >
       <div className="hidden md:block min-w-[35%] w-[65%] my-auto">
         <PostPictures
@@ -40,7 +40,7 @@ const PostDetailsModal = () => {
         />
       </div>
 
-      <div className=" bg-white w-full h-full md:w-[35%] md:min-w-[26rem] lg:min-w-[30rem] flex flex-col">
+      <div className="bg-white w-full h-full md:w-[35%] md:min-w-[26rem] lg:min-w-[30rem] flex flex-col">
         <div className="row-center-v md:hidden p-4 pb-2 space-x-6 h-fit">
           <MyBackIcon onClick={closeModal} />
           <h2 className="text-lg font-semibold flex-grow">Comments</h2>

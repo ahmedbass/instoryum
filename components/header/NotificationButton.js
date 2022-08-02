@@ -5,6 +5,7 @@ import OverlayOpener from "../ui/OverlayOpener";
 import NotificationIndicator from "../ui/NotificationIndicator";
 
 const NotificationButton = ({ isActive, onClick, onBlur }) => {
+
   return (
     <OverlayOpener
       className="relative"

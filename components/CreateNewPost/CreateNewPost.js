@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import Modal from "react-modal";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   createPostStep,
@@ -8,18 +10,17 @@ import {
   selectedImageIndex,
   selectedImages,
 } from "../../atom/CreateNewPostAtom";
-import Modal from "react-modal";
-import { useEffect, useState } from "react";
-import ImageEditor from "./StepOne_ImageEditing/ImageEditor";
+import { HeaderTabsAtom } from "../../atom/HeaderTabsAtom";
 import { MAX_FILES_PER_POST } from "../../lib/constants";
 import ConfirmDiscardPopup from "./ConfirmDiscardPopup";
-import ImageFilters, { defaultFilters } from "./StepOne_ImageEditing/ImageFilters";
 import DragAndDrop from "./DragAndDrop";
+import Header from "./Header";
+import ImageEditor from "./StepOne_ImageEditing/ImageEditor";
+import ImageFilters, { defaultFilters } from "./StepOne_ImageEditing/ImageFilters";
 import ImageOutput from "./StepTwo_PostUpload/ImageOutput";
 import InfoSection from "./StepTwo_PostUpload/InfoSection";
-import Header from "./Header";
 
-const CreateNewPost = () => {
+const CreateNewPost = ({ onBlur }) => {
   const [open, setOpen] = useRecoilState(modalState);
   const [creationStep, setCreationStep] = useRecoilState(createPostStep);
   const [selectedFiles, setSelectedFiles] = useRecoilState(selectedImages);
@@ -116,7 +117,10 @@ const CreateNewPost = () => {
     setLocation("");
     setAspectRatio(1);
 
-    if (closeOnDiscard) setOpen(false);
+    if (closeOnDiscard) {
+      setOpen(false);
+      onBlur();
+    }
   };
 
   return (

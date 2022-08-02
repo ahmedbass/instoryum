@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  input {
+    @apply outline-none
+  }
+
   img {
     @apply select-none
   }
@@ -106,4 +110,8 @@
   outline: none;
   overflow: auto;
   webkit-overflow-scrolling: touch;
+}
+
+#nprogress .bar {
+  @apply h-[0.2rem] bg-gradient-to-r from-amber-300 via-red-500 to-purple-500
 }

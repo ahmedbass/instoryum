@@ -1,25 +1,46 @@
-import MyIcon from "../../ui/MyIcon";
-import {VscSmiley} from "react-icons/vsc";
+import {serverTimestamp} from "firebase/firestore";
+import {useState} from "react";
 import {AiOutlineHeart} from "react-icons/ai";
 import {FiImage} from "react-icons/fi";
-import {useState} from "react";
+import {VscSmiley} from "react-icons/vsc";
+import {useRecoilValue} from "recoil";
+import {currentUserAtom} from "../../../atom/CurrentUserAtom";
+import {useSetDoc} from "../../../lib/myHooks";
+import MyButton from "../../ui/MyButton";
+import MyIcon from "../../ui/MyIcon";
 import MyInput from "../../ui/MyInput";
 
-const ChatInputArea = () => {
+const ChatInputArea = ({chatId}) => {
+  const currentUser = useRecoilValue(currentUserAtom);
+  const addMessage = useSetDoc();
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setInputValue("");
+    await addMessage(`chats/${chatId}/messages`, {
+      message: inputValue,
+      sender: currentUser.id,
+      type: "text",
+      sentAt: serverTimestamp(),
+    });
+  };
+
   return (
-      <div className="p-4">
-        <div
-            className="row-center border border-gray-300 rounded-3xl overflow-hidden px-2.5 space-x-3">
+      <div className="p-4 mt-auto bg-white">
+        <form
+            onSubmit={handleSubmit}
+            className="row-center border border-gray-300 rounded-3xl overflow-hidden px-2.5 space-x-3"
+        >
           <MyIcon Icon={VscSmiley}/>
           <MyInput
               placeholder="Message..."
               value={inputValue}
               onChange={handleInputChange}
-              className="m-0.5"
+              onSubmit={handleSubmit}
           />
           {/*<input*/}
           {/*    type="text"*/}
@@ -30,14 +51,14 @@ const ChatInputArea = () => {
           {/*/>*/}
 
           {inputValue ? (
-              <button className="font-semibold text-blue-500 px-2">Send</button>
+              <MyButton className="px-2">Send</MyButton>
           ) : (
               <>
                 <MyIcon Icon={FiImage}/>
                 <MyIcon Icon={AiOutlineHeart}/>
               </>
           )}
-        </div>
+        </form>
       </div>
   );
 };

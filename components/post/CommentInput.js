@@ -46,7 +46,7 @@ const CommentInput = ({ postId, hideInSm = true }) => {
         placeholder="Add a comment..."
         value={comment}
         onChange={(e) => setComment(e.target.value)}
-        onEnter={uploadComment}
+        onSubmit={uploadComment}
       />
 
       <MyButton disabled={!comment.trim().length || isLoading} onClick={uploadComment}>

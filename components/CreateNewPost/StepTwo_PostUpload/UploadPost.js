@@ -31,10 +31,10 @@ const UploadPost = ({ onShareComplete }) => {
   const getMentions = () => caption.split(" ").filter((word) => word.startsWith("@"));
 
   const buildPostObj = () => ({
+    author: currentUser,
     caption: caption,
     hashtags: getHashtags(),
     mentions: getMentions(),
-    author: currentUser,
     aspectRatio: aspectRatio,
     createdAt: serverTimestamp(),
     // updatedAt: serverTimestamp(),

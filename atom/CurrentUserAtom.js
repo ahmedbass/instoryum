@@ -2,5 +2,5 @@ import { atom } from "recoil";
 
 export const currentUserAtom = atom({
   key: "currentLoggedInUser",
-  default: {},
+  default: null,
 });

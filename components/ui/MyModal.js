@@ -1,7 +1,7 @@
 import Modal from "react-modal";
+import MyBackIcon from "./MyBackIcon";
 import MyButton from "./MyButton";
 import MyCloseIcon from "./MyCloseIcon";
-import MyBackIcon from "./MyBackIcon";
 
 const CloseButton = ({ closeBtn, onClick }) => {
   if (!closeBtn || !closeBtn.enabled) return;
@@ -39,6 +39,7 @@ const MyModal = ({
   overlayClassName,
   closeBackBtn,
   closeBtn = { enabled: false, icon: "close", position: "tr", className: "" },
+  ...props
 }) => {
   return (
     <Modal
@@ -46,11 +47,12 @@ const MyModal = ({
       onRequestClose={onRequestClose}
       contentLabel={label}
       shouldReturnFocusAfterClose={false}
-      overlayClassName={`modal-overlay !${overlayClassName}`}
+      overlayClassName={`modal-overlay ${overlayClassName}`}
       ariaHideApp={false}
       shouldFocusAfterRender={true}
-      className={`absolute-center w-screen h-screen md:w-fit md:max-w-[95%] md:max-h-[90%] 
-      flex bg-white border md:rounded-lg md:overflow-hidden ${className}`}
+      className={`absolute-center flex w-screen md:w-fit md:max-w-[95%] h-screen md:max-h-[90%]
+      bg-white border md:rounded-lg md:overflow-hidden outline-none ${className}`}
+      {...props}
     >
       {children}
 

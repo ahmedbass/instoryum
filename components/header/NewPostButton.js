@@ -13,14 +13,14 @@ const NewPostButton = ({ isActive, onClick, onBlur }) => {
   };
 
   return (
-    <div tabIndex={0} onBlur={onBlur}>
+    <div tabIndex={0}>
       <MyIcon
         Icon={isActive ? RiAddCircleFill : RiAddCircleLine}
         hover={false}
         onClick={handleClick}
       />
 
-      <CreateNewPost />
+      <CreateNewPost onBlur={onBlur}/>
     </div>
   );
 };

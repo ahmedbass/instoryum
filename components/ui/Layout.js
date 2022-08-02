@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Header from "../header/Header";
-import { LOGIN_PAGE } from "../ProtectedPages";
+import { LOGIN_PAGE } from "../PagesProtector";
 
 export const MY_SCROLL =
   "overflow-x-hidden overflow-y-auto sm:scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200";
@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
     <div className={`${BACKGROUND_COLOR} h-screen w-screen col-center-h ${MY_SCROLL}`}>
       <Head>
         <title>My Instagram</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
         <meta name="description" content="My Instagram clone" />
         <link rel="icon" href="/logo.svg.webp" />
       </Head>

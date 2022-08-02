@@ -1,4 +1,4 @@
-import { getReadableDate } from "../../lib/utils";
+import { getDateDistance } from "../../lib/utils";
 import MyImg from "../ui/MyImg";
 
 export const Hashtags = ({ hashtags, expandHashtagByDefault }) => {
@@ -39,7 +39,7 @@ const PostCaption = ({
 
         <Hashtags hashtags={hashtags} expandHashtagByDefault={expandHashtagByDefault} />
 
-        <p className="text-gray-500 text-xs block mt-1">{getReadableDate(createdAt)}</p>
+        <p className="text-gray-500 text-xs block mt-1">{getDateDistance(createdAt)}</p>
       </div>
     </div>
   );

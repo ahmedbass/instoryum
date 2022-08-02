@@ -66,7 +66,7 @@ const Save = () => {
 const PostActions = ({ isLiked, selectPost, postId }) => {
   return (
     <div className="flex justify-between">
-      <div className="flex space-x-1 sm:space-x-4">
+      <div className="flex space-x-1 xs:space-x-4">
         <Like isLiked={isLiked} postId={postId} />
         <Comment onClick={selectPost} />
         <Share />

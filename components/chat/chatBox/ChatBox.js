@@ -1,18 +1,20 @@
-import EmptyChatView from "./EmptyChatView";
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { openChatIdAtom } from "../../../atom/ChatAtom";
 import ChatBoxHeader from "./ChatBoxHeader";
 import ChatInputArea from "./ChatInputArea";
-import ActualChat from "./ActualChat";
+import Conversation from "./Conversation";
+import EmptyChatView from "./EmptyChatView";
 
-const ChatBox = ({ chat, closeChat }) => {
-  if (!chat?.id) {
-    return <EmptyChatView />;
-  }
+const ChatBox = () => {
+  const [openChatId, setOpenChatId] = useRecoilState(openChatIdAtom);
 
+  if (!openChatId) return <EmptyChatView />;
   return (
-    <div className={`${chat ? "flex" : "hidden"} md:flex flex-col overflow-auto`}>
-      <ChatBoxHeader chat={chat} closeChat={closeChat} />
-      <ActualChat conversation={chat.conversation} />
-      <ChatInputArea />
+    <div className={`${openChatId ? "flex" : "hidden"} md:flex flex-col overflow-y-auto`}>
+      <ChatBoxHeader chatId={openChatId} closeChat={setOpenChatId.bind(this, null)} />
+      <Conversation chatId={openChatId} />
+      <ChatInputArea chatId={openChatId} />
     </div>
   );
 };
