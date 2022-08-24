@@ -287,7 +287,7 @@ const ONE_MINUTE_IN_SEC = 60;
 const Conversation = ({ chatId }) => {
   const conversation = useCollectionListener({
     path: `chats/${chatId}/messages`,
-    order: { by: "sentAt", direction: "desc" },
+    order: { by: "sentAt" },
     limitNum: 30,
   });
   const currentUser = useRecoilValue(currentUserAtom);

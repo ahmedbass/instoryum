@@ -12,7 +12,7 @@ const MyLoaderFull = ({show = true}) => {
               className="font-semibold text-xl tracking-wider text-transparent bg-clip-text
             bg-gradient-to-br from-amber-500 via-red-600 to-purple-600"
           >
-            My Instagram
+            Instoryum
           </h1>
           <p className="font-light text-gray-500 uppercase tracking-widest">By Ahmed Bass</p>
         </div>

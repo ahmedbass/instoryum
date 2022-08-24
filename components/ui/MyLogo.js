@@ -6,7 +6,7 @@ const ImageLogo = ({ logo }) => (
 );
 
 const MyLogo = ({ logo = 1, layout, noLink }) => {
-  const logo1 = "/Instagram_logo.svg.png";
+  const logo1 = "/logo_light.png";
   const logo2 = "/logo.svg.webp";
 
   logo = logo === 1 ? logo1 : logo2;
