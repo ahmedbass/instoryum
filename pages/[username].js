@@ -7,7 +7,7 @@ const UserProfilePage = (props) => {
   return (
     <div className="w-full">
       <Head>
-        <title>{name} &bull; My Instagram</title>
+        <title>{name} &bull; Instoryum</title>
       </Head>
       <ProfileHeader />
       <ProfilePosts />

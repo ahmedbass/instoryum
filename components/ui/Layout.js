@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
   return (
     <div className={`${BACKGROUND_COLOR} h-screen w-screen col-center-h ${MY_SCROLL}`}>
       <Head>
-        <title>My Instagram</title>
+        <title>Instoryum</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
         <meta name="description" content="My Instagram clone" />
         <link rel="icon" href="/logo.svg.webp" />
